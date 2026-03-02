@@ -1,0 +1,196 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MealBridge | Connect Food to Those in Need</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+<style>
+.hero-gradient{
+background:linear-gradient(135deg,#4CAF50,#FF9800);
+}
+
+.btn-primary{
+background:#4CAF50;
+color:white;
+transition:.3s;
+}
+.btn-primary:hover{
+background:#3e8e41;
+transform:translateY(-2px);
+}
+
+.btn-secondary{
+background:#FF9800;
+color:white;
+transition:.3s;
+}
+.btn-secondary:hover{
+background:#e68900;
+transform:translateY(-2px);
+}
+
+.nav-link:hover{
+color:#4CAF50;
+}
+</style>
+</head>
+
+<body class="bg-gray-50">
+
+<!-- ================= NAVBAR ================= -->
+<nav class="bg-white shadow-md sticky top-0 z-50">
+<div class="container mx-auto px-4 py-3 flex justify-between items-center">
+
+<div class="flex items-center">
+<i class="fas fa-utensils text-2xl text-green-600 mr-2"></i>
+<h1 class="text-2xl font-bold text-green-600">MealBridge</h1>
+</div>
+
+<div class="hidden md:flex space-x-8">
+<a href="{% url 'home_page' %}" class="nav-link font-medium">Home</a>
+<a href="#about" class="nav-link font-medium">About</a>
+<a href="#how" class="nav-link font-medium">How It Works</a>
+<a href="#impact" class="nav-link font-medium">Impact</a>
+
+<!-- ✅ Donor Login -->
+<a href="{% url 'donar_login' %}"
+class="font-medium text-green-600">
+Login
+</a>
+</div>
+
+</div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section class="hero-gradient text-white py-20">
+<div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+
+<div class="md:w-1/2">
+<h1 class="text-4xl md:text-5xl font-bold mb-6">
+Turn Extra Food Into Someone's Next Meal
+</h1>
+
+<p class="text-lg mb-8">
+MealBridge connects event organizers with nearby orphanages
+and old age homes to donate surplus food safely and quickly.
+</p>
+
+<div class="flex gap-4">
+
+<!-- ✅ DONATE FOOD -->
+<a href="{% url 'donar_register' %}"
+class="btn-primary px-6 py-3 rounded-lg font-semibold">
+<i class="fas fa-utensils mr-2"></i>Donate Food
+</a>
+
+<!-- ✅ HOME REGISTER -->
+<a href="{% url 'home_register' %}"
+class="btn-secondary px-6 py-3 rounded-lg font-semibold">
+Register Home
+</a>
+
+</div>
+</div>
+
+<div class="md:w-1/2 mt-10 md:mt-0 flex justify-center">
+<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c"
+class="rounded-lg shadow-lg w-full max-w-md">
+</div>
+
+</div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="py-16">
+<div class="container mx-auto px-4 text-center">
+
+<h2 class="text-3xl font-bold mb-6">Why MealBridge Exists</h2>
+
+<p class="max-w-3xl mx-auto text-lg text-gray-600">
+Every day large amounts of food are wasted after events while many
+people struggle to get meals. MealBridge bridges this gap by enabling
+fast and local food donations.
+</p>
+
+</div>
+</section>
+
+<!-- ================= HOW IT WORKS ================= -->
+<section id="how" class="py-16 bg-gray-100">
+<div class="container mx-auto px-4 text-center">
+
+<h2 class="text-3xl font-bold mb-12">How It Works</h2>
+
+<div class="grid md:grid-cols-3 gap-8">
+
+<div class="bg-white p-6 rounded-xl shadow">
+<i class="fas fa-upload text-3xl text-green-600 mb-4"></i>
+<h3 class="font-semibold text-xl mb-2">Post Donation</h3>
+<p>Event organizers upload leftover food details.</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<i class="fas fa-bell text-3xl text-green-600 mb-4"></i>
+<h3 class="font-semibold text-xl mb-2">Homes Accept</h3>
+<p>Nearby homes view and accept available food.</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<i class="fas fa-truck text-3xl text-green-600 mb-4"></i>
+<h3 class="font-semibold text-xl mb-2">Food Delivered</h3>
+<p>Food reaches people who truly need it.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ================= IMPACT ================= -->
+<section id="impact" class="py-16 text-center">
+<div class="container mx-auto px-4">
+
+<h2 class="text-3xl font-bold mb-10">Creating Real Impact</h2>
+
+<div class="grid md:grid-cols-4 gap-6">
+
+<div>
+<p class="text-4xl font-bold text-green-600">10K+</p>
+<p>Meals Saved</p>
+</div>
+
+<div>
+<p class="text-4xl font-bold text-green-600">120+</p>
+<p>Homes Supported</p>
+</div>
+
+<div>
+<p class="text-4xl font-bold text-green-600">300+</p>
+<p>Events Joined</p>
+</div>
+
+<div>
+<p class="text-4xl font-bold text-green-600">2 Tons</p>
+<p>Food Waste Reduced</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-gray-800 text-white py-8 text-center">
+<p>© 2026 MealBridge. All rights reserved.</p>
+<p>No plate should be empty while food is wasted.</p>
+</footer>
+
+</body>
+</html>

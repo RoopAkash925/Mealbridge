@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MealBridge - Donor Login</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="donar-login.css">
+
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+<!-- LOGIN CARD -->
+<div class="bg-white shadow-xl rounded-xl p-8 w-full max-w-md">
+
+<!-- Logo -->
+<div class="text-center mb-6">
+<h1 class="text-3xl font-bold text-green-600">
+<i class="fas fa-utensils mr-2"></i>MealBridge
+</h1>
+<p class="text-gray-500 mt-2">Donor Login</p>
+</div>
+
+<!-- FORM -->
+<form method="POST" action="{% url 'donar_login' %}">
+{% csrf_token %}
+
+<!-- Email -->
+<div class="mb-4">
+<label>Email</label>
+<input name="email" type="email" required
+class="w-full border p-3 rounded-lg"
+placeholder="Enter registered email">
+</div>
+
+<!-- Password -->
+<div class="mb-6">
+<label>Password</label>
+<input name="password" type="password" required
+class="w-full border p-3 rounded-lg">
+</div>
+
+<button type="submit"
+class="w-full bg-green-500 text-white py-3 rounded-lg">
+Login
+</button>
+
+</form>
+
+<!-- Register Link -->
+<div class="text-center mt-6">
+<p class="text-gray-600">
+New donor?
+<a href="{% url 'donar_register' %}">
+Create Account
+</a>
+</p>
+</div>
+
+<!-- Back Home -->
+<div class="text-center mt-4">
+<a href="{% url 'home_page' %}" class="text-sm text-gray-500 hover:underline">
+← Back to Home
+</a>
+</div>
+
+</div>
+
+
+</body>
+</html>

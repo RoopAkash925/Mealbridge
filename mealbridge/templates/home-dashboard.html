@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MealBridge - Home Dashboard</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="home-dashboard.css">
+
+
+
+
+</head>
+
+<body class="bg-gray-100">
+
+<!-- ===== DASHBOARD LAYOUT ===== -->
+<div class="flex min-h-screen">
+
+<!-- SIDEBAR -->
+<div class="w-64 bg-white shadow-lg hidden md:block">
+
+<div class="p-6 border-b">
+<h2 class="text-2xl font-bold text-green-600">
+<i class="fas fa-home mr-2"></i>MealBridge
+</h2>
+</div>
+
+<nav class="p-4 space-y-4">
+
+<a href="#" class="block p-3 rounded-lg bg-green-100 font-medium">
+<i class="fas fa-chart-line mr-2"></i> Dashboard
+</a>
+
+<a href="#donations" class="block p-3 rounded-lg hover:bg-gray-100">
+<i class="fas fa-utensils mr-2"></i> Available Donations
+</a>
+
+<a href="#" class="block p-3 rounded-lg hover:bg-gray-100">
+<i class="fas fa-check-circle mr-2"></i> Accepted Food
+</a>
+
+<a href="#" class="block p-3 rounded-lg hover:bg-gray-100">
+<i class="fas fa-user mr-2"></i> Profile
+</a>
+
+</nav>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<div class="flex-1 p-8">
+
+<!-- HEADER -->
+<div class="flex justify-between items-center mb-8">
+<h1 class="text-3xl font-bold">Home Dashboard</h1>
+
+<a href="home.html"
+class="bg-green-500 text-white px-5 py-2 rounded-lg">
+<i class="fas fa-sign-out-alt mr-2"></i>Logout
+</a>
+</div>
+
+<!-- STATS -->
+<div class="grid md:grid-cols-3 gap-6 mb-10">
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="text-gray-500">Meals Received</h3>
+<p class="text-3xl font-bold text-green-600">860</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="text-gray-500">Active Donations</h3>
+<p class="text-3xl font-bold text-orange-500">3</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="text-gray-500">People Supported</h3>
+<p class="text-3xl font-bold text-green-600">120</p>
+</div>
+
+</div>
+
+<!-- ===== AVAILABLE DONATIONS ===== -->
+<h2 class="text-2xl font-bold mb-6 text-green-600">
+🍲 Available Food Donations
+</h2>
+
+<div id="donationList" class="space-y-4"></div>
+
+<h2 class="text-2xl font-bold mt-10 text-green-600">
+✅ Accepted Donations
+</h2>
+
+<div id="acceptedList" class="space-y-4"></div>
+
+<!-- Donation Card 1 -->
+<div id="donationList"></div>
+
+
+<!-- SUCCESS MESSAGE -->
+<div id="successMsg"
+class="hidden mt-6 p-4 bg-green-100 text-green-700 rounded-lg">
+
+✅ Donation accepted! Donor has been notified.
+
+</div>
+
+<div>
+    <h2>Available Food Donations</h2>
+
+<table border="1">
+<tr>
+    <th>Event</th>
+    <th>Food Type</th>
+    <th>Quantity</th>
+    <th>Location</th>
+    <th>Donor</th>
+</tr>
+
+{% for donation in donations %}
+<tr>
+    <td>{{ donation.event_name }}</td>
+    <td>{{ donation.food_type }}</td>
+    <td>{{ donation.quantity }}</td>
+    <td>{{ donation.location }}</td>
+
+    <!-- donor username -->
+    <td>{{ donation.donor.username }}</td>
+</tr>
+{% endfor %}
+</table>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MealBridge - Home Registration</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+<!-- REGISTER CARD -->
+<div class="bg-white shadow-xl rounded-xl p-8 w-full max-w-lg">
+
+<!-- Logo -->
+<div class="text-center mb-6">
+<h1 class="text-3xl font-bold text-green-600">
+<i class="fas fa-home mr-2"></i>MealBridge
+</h1>
+<p class="text-gray-500 mt-2">Register Your Home</p>
+</div>
+
+<!-- ================= FORM ================= -->
+<form method="POST" action="{% url 'home_register' %}" class="space-y-4">
+{% csrf_token %}
+
+<!-- Organization Name -->
+<div>
+<label class="font-medium">Home / Organization Name</label>
+<input name="organization_name" type="text" required
+class="w-full border p-3 rounded-lg mt-1"
+placeholder="Sunshine Orphanage">
+</div>
+
+<!-- Home Type -->
+<div>
+<label class="font-medium">Home Type</label>
+<select name="home_type" required
+class="w-full border p-3 rounded-lg mt-1">
+<option>Old Age Home</option>
+<option>Orphanage</option>
+<option>Shelter</option>
+<option>NGO</option>
+</select>
+</div>
+
+<!-- Contact Number -->
+<div>
+<label class="font-medium">Contact Number</label>
+<input name="contact_number" type="tel" required
+class="w-full border p-3 rounded-lg mt-1"
+placeholder="9876543210">
+</div>
+
+<!-- Email -->
+<div>
+<label class="font-medium">Email</label>
+<input name="email" type="email" required
+class="w-full border p-3 rounded-lg mt-1"
+placeholder="example@email.com">
+</div>
+
+<!-- Address -->
+<div>
+<label class="font-medium">Address</label>
+<textarea name="address" required
+class="w-full border p-3 rounded-lg mt-1"
+placeholder="Enter full address"></textarea>
+</div>
+
+<!-- Residents -->
+<div>
+<label class="font-medium">Number of Residents</label>
+<input name="residents" type="number" required
+class="w-full border p-3 rounded-lg mt-1"
+placeholder="50">
+</div>
+
+<!-- Password -->
+<div>
+<label class="font-medium">Create Password</label>
+<input name="password" type="password" required
+class="w-full border p-3 rounded-lg mt-1">
+</div>
+
+<!-- Submit -->
+<button type="submit"
+class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold">
+<i class="fas fa-user-plus mr-2"></i>Register Home
+</button>
+
+</form>
+
+<!-- Login Link -->
+<div class="text-center mt-6">
+<p class="text-gray-600">
+Already registered?
+<a href="{% url 'home_login' %}"
+class="text-green-600 font-medium hover:underline">
+Login Here
+</a>
+</p>
+</div>
+
+<!-- Back -->
+<div class="text-center mt-3">
+<a href="{% url 'home_page' %}"
+class="text-sm text-gray-500 hover:underline">
+← Back to Home
+</a>
+</div>
+
+</div>
+
+</body>
+</html>

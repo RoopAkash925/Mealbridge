@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MealBridge - Donor Dashboard</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="donar-dashboard.css">
+
+
+</head>
+
+<body class="bg-gray-100">
+
+<!-- ===== DASHBOARD LAYOUT ===== -->
+<div class="flex min-h-screen">
+
+<!-- SIDEBAR -->
+<div class="w-64 bg-white shadow-lg hidden md:block">
+
+<div class="p-6 border-b">
+<h2 class="text-2xl font-bold text-green-600">
+<i class="fas fa-utensils mr-2"></i>MealBridge
+</h2>
+</div>
+
+<nav class="p-4 space-y-4">
+
+<a href="#" class="block p-3 rounded-lg bg-green-100 font-medium">
+<i class="fas fa-chart-line mr-2"></i> Dashboard
+</a>
+
+<a href="#donate" class="block p-3 rounded-lg hover:bg-gray-100">
+<i class="fas fa-plus-circle mr-2"></i> Donate Food
+</a>
+
+<a href="#" class="block p-3 rounded-lg hover:bg-gray-100">
+<i class="fas fa-clock mr-2"></i> Active Donations
+</a>
+
+<a href="#" class="block p-3 rounded-lg hover:bg-gray-100">
+<i class="fas fa-history mr-2"></i> History
+</a>
+
+<a href="#" class="block p-3 rounded-lg hover:bg-gray-100">
+<i class="fas fa-user mr-2"></i> Profile
+</a>
+
+</nav>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="flex-1 p-8">
+
+<!-- TOP HEADER -->
+<div class="flex justify-between items-center mb-8">
+<h1 class="text-3xl font-bold">Donor Dashboard</h1>
+
+<button onclick="logout()"
+class="bg-green-500 text-white px-5 py-2 rounded-lg">
+<i class="fas fa-sign-out-alt mr-2"></i>Logout
+</button>
+</div>
+
+<!-- STATS CARDS -->
+<div class="grid md:grid-cols-3 gap-6 mb-10">
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="text-gray-500">Meals Donated</h3>
+<p class="text-3xl font-bold text-green-600">1,240</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="text-gray-500">Homes Helped</h3>
+<p class="text-3xl font-bold text-green-600">32</p>
+</div>
+
+<div class="bg-white p-6 rounded-xl shadow">
+<h3 class="text-gray-500">Active Requests</h3>
+<p class="text-3xl font-bold text-orange-500">2</p>
+</div>
+
+</div>
+
+<!-- ===== DONATE FOOD FORM ===== -->
+<div id="donate" class="bg-white p-8 rounded-xl shadow-lg">
+
+<h2 class="text-2xl font-bold mb-6 text-green-600">
+🍲 Create Food Donation
+</h2>
+<!-- ===== DONOR HISTORY ===== -->
+
+<h2 class="text-2xl font-bold mt-10 text-green-600">
+📋 My Donations
+</h2>
+
+<div id="myDonations" class="space-y-4 mt-4"></div>
+
+
+<form method="POST" action="{% url 'create_donation' %}"
+      class="grid md:grid-cols-2 gap-6"
+      enctype="multipart/form-data">
+
+{% csrf_token %}
+
+<!-- Event Name -->
+<div>
+<label class="font-medium">Event Name</label>
+<input name="event_name" type="text"
+class="w-full border p-3 rounded-lg mt-2" required>
+</div>
+
+<!-- Food Type -->
+<div>
+<label class="font-medium">Food Type</label>
+<select name="food_type"
+class="w-full border p-3 rounded-lg mt-2">
+<option>Vegetarian</option>
+<option>Non-Vegetarian</option>
+</select>
+</div>
+
+<!-- Quantity -->
+<div>
+<label class="font-medium">Quantity</label>
+<input name="quantity" type="number"
+class="w-full border p-3 rounded-lg mt-2" required>
+</div>
+
+<!-- Cooked Time -->
+<div>
+<label class="font-medium">Cooked Time</label>
+<input name="cooked_time" type="time"
+class="w-full border p-3 rounded-lg mt-2">
+</div>
+
+<!-- Pickup Deadline -->
+<div>
+<label class="font-medium">Pickup Deadline</label>
+<input name="pickup_deadline" type="datetime-local"
+class="w-full border p-3 rounded-lg mt-2">
+</div>
+
+<!-- Location -->
+<div>
+<label class="font-medium">Pickup Address</label>
+<input name="location" type="text"
+class="w-full border p-3 rounded-lg mt-2" required>
+</div>
+
+<!-- Packaging -->
+<div>
+<label class="font-medium">Packaging</label>
+<select name="packaging"
+class="w-full border p-3 rounded-lg mt-2">
+<option>Packed Properly</option>
+<option>Needs Containers</option>
+</select>
+</div>
+
+<!-- Image -->
+<div>
+<label class="font-medium">Food Image</label>
+<input name="image" type="file"
+class="w-full border p-3 rounded-lg mt-2">
+</div>
+
+<div class="col-span-2 mt-8">
+<button type="submit"
+class="bg-green-500 text-white px-8 py-3 rounded-lg font-semibold">
+Request Pickup
+</button>
+</div>
+
+</form>
+
+
+
+
+</div>
+
+<!-- SUCCESS MESSAGE -->
+<div id="successMsg"
+class="hidden mt-6 p-4 bg-green-100 text-green-700 rounded-lg">
+
+✅ Donation posted successfully! Nearby homes are being notified.
+
+</div>
+
+</div>
+</div>
+
+<h2>Welcome {{ request.user.first_name }}</h2>
+
+
+
+
+
+
+
+</body>
+</html>
