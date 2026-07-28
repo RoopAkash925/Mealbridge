@@ -15,6 +15,6 @@ urlpatterns = [
     path('donar-login/', views.donor_login, name='donar_login'),
     path('donar-dashboard/', views.donar_dashboard, name='donar_dashboard'),
 
-    # ⭐ THIS LINE MUST EXIST
+    
     path('create-donation/', views.create_donation, name='create_donation'),
 ]

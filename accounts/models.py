@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
 class Home(models.Model):
 
     HOME_TYPES = [
@@ -44,7 +45,7 @@ class Donation(models.Model):
     food_type = models.CharField(max_length=50)
     quantity = models.IntegerField()
     cooked_time = models.TimeField(null=True, blank=True)
-    pickup_deadline = models.DateTimeField(null=True, blank=True)
+    pickup_deadline = models.DateField(null=True, blank=True)
     location = models.CharField(max_length=255)
     packaging = models.CharField(max_length=100)
     image = models.ImageField(upload_to="donations/", null=True, blank=True)

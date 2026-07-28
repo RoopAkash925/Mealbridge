@@ -7,12 +7,12 @@ from django.contrib import messages
 from .models import Home, Donor, Donation
 
 
-# ================= HOME PAGE =================
+
 def home_page(request):
     return render(request, "home.html")
 
 
-# ================= HOME REGISTER =================
+
 def home_register(request):
 
     if request.method == "POST":
@@ -25,14 +25,14 @@ def home_register(request):
         address = request.POST.get("address")
         residents = request.POST.get("residents")
 
-        # Create Django user
+        
         user = User.objects.create_user(
             username=email,
             email=email,
             password=password
         )
 
-        # Create Home profile
+        
         Home.objects.create(
             user=user,
             organization_name=organization_name,
@@ -49,7 +49,6 @@ def home_register(request):
     return render(request, "home-register.html")
 
 
-# ================= HOME LOGIN =================
 def home_login(request):
 
     if request.method == "POST":
@@ -72,17 +71,17 @@ def home_login(request):
     return render(request, "home-login.html")
 
 
-# ================= HOME DASHBOARD =================
+
 @login_required
 def home_dashboard(request):
 
-    # Ensure logged user has Home profile
+   
     try:
         home = Home.objects.get(user=request.user)
     except Home.DoesNotExist:
         return redirect("home_register")
 
-    # Fetch all donor donations
+
     donations = Donation.objects.all().order_by('-created_at')
 
     return render(request, "home-dashboard.html", {
@@ -91,7 +90,6 @@ def home_dashboard(request):
     })
 
 
-# ================= DONOR REGISTER =================
 def donor_register(request):
 
     if request.method == "POST":
@@ -101,14 +99,14 @@ def donor_register(request):
         phone = request.POST.get("phone")
         password = request.POST.get("password")
 
-        # Create login user
+
         user = User.objects.create_user(
             username=email,
             email=email,
             password=password
         )
 
-        # Create donor profile
+        
         Donor.objects.create(
             user=user,
             name=name,
@@ -121,7 +119,7 @@ def donor_register(request):
     return render(request, "donar-register.html")
 
 
-# ================= DONOR LOGIN =================
+
 def donor_login(request):
 
     if request.method == "POST":
@@ -144,13 +142,13 @@ def donor_login(request):
     return render(request, "donar-login.html")
 
 
-# ================= DONOR DASHBOARD =================
+
 @login_required
 def donar_dashboard(request):
     return render(request, "donar-dashboard.html")
 
 
-# ================= CREATE DONATION =================
+
 @login_required
 def create_donation(request):
 

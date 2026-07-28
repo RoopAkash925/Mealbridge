@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -137,13 +138,11 @@ class="w-full border p-3 rounded-lg mt-2" required>
 class="w-full border p-3 rounded-lg mt-2">
 </div>
 
-<!-- Pickup Deadline -->
-<div>
+<<div>
 <label class="font-medium">Pickup Deadline</label>
-<input name="pickup_deadline" type="datetime-local"
+<input name="pickup_deadline" type="date"
 class="w-full border p-3 rounded-lg mt-2">
 </div>
-
 <!-- Location -->
 <div>
 <label class="font-medium">Pickup Address</label>
@@ -161,12 +160,8 @@ class="w-full border p-3 rounded-lg mt-2">
 </select>
 </div>
 
-<!-- Image -->
-<div>
-<label class="font-medium">Food Image</label>
-<input name="image" type="file"
-class="w-full border p-3 rounded-lg mt-2">
-</div>
+
+
 
 <div class="col-span-2 mt-8">
 <button type="submit"
@@ -182,7 +177,7 @@ Request Pickup
 
 </div>
 
-<!-- SUCCESS MESSAGE -->
+
 <div id="successMsg"
 class="hidden mt-6 p-4 bg-green-100 text-green-700 rounded-lg">
 
