@@ -17,4 +17,6 @@ urlpatterns = [
 
     
     path('create-donation/', views.create_donation, name='create_donation'),
+    path("profile/", views.donar_profile, name="donar_profile"),
+    path("update-profile/", views.update_profile, name="update_profile"),
 ]

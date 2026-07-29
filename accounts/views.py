@@ -174,3 +174,11 @@ def create_donation(request):
         return redirect("donar_dashboard")
 
     return redirect("donar_dashboard")
+
+@login_required
+def donar_profile(request):
+    donor = Donor.objects.get(user=request.user)
+
+    return render(request, "profile.html", {
+        "donor": donor
+    })
