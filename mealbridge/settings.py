@@ -79,9 +79,12 @@ WSGI_APPLICATION = 'mealbridge.wsgi.application'
 
 
 
+import os
+import dj_database_url
+
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.environ.get("postgresql://neondb_owner:npg_sTFwJeGWY7u1@ep-quiet-base-avu1er2b-pooler.c-11.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"),
+        default=os.getenv("DATABASE_URL"),
         conn_max_age=600,
         ssl_require=True,
     )
