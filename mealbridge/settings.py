@@ -77,11 +77,14 @@ WSGI_APPLICATION = 'mealbridge.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    "default": dj_database_url.config(
+        default=os.environ.get("postgresql://neondb_owner:npg_sTFwJeGWY7u1@ep-quiet-base-avu1er2b-pooler.c-11.us-east-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"),
+        conn_max_age=600,
+        ssl_require=True,
+    )
 }
 
 

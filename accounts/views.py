@@ -90,6 +90,9 @@ def home_dashboard(request):
     })
 
 
+from django.contrib.auth.models import User
+from django.contrib import messages
+
 def donor_register(request):
 
     if request.method == "POST":
@@ -99,6 +102,9 @@ def donor_register(request):
         phone = request.POST.get("phone")
         password = request.POST.get("password")
 
+        if User.objects.filter(username=email).exists():
+            messages.error(request, "Email already registered.")
+            return redirect("donar_register")
 
         user = User.objects.create_user(
             username=email,
@@ -106,19 +112,17 @@ def donor_register(request):
             password=password
         )
 
-        
         Donor.objects.create(
             user=user,
             name=name,
-            phone=phone
+            phone=phone,
+            email=email
         )
 
         messages.success(request, "Donor registered successfully!")
         return redirect("donar_login")
 
     return render(request, "donar-register.html")
-
-
 
 def donor_login(request):
 
