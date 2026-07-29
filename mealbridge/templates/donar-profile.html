@@ -1,73 +1,241 @@
 {% load static %}
-</button>
+<!DOCTYPE html>
+<html lang="en">
 
-</div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | MealBridge</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body class="bg-gray-100">
+
+<div class="max-w-5xl mx-auto py-10">
+
+    <!-- Header -->
+    <div class="bg-white rounded-xl shadow-lg p-8">
+
+        <div class="flex flex-col md:flex-row items-center justify-between">
+
+            <div class="flex items-center gap-6">
+
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                     class="w-32 h-32 rounded-full border-4 border-green-500">
+
+                <div>
+
+                    <h1 class="text-4xl font-bold text-green-600">
+                        {{ donor.name }}
+                    </h1>
+
+                    <p class="text-gray-500 mt-2">
+                        MealBridge Food Donor
+                    </p>
+
+                </div>
+
+            </div>
+
+            <a href="{% url 'donar_dashboard' %}"
+               class="mt-6 md:mt-0 bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg">
+
+                <i class="fas fa-arrow-left mr-2"></i>
+
+                Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
 
 
-<div class="grid md:grid-cols-2 gap-8 mt-10">
 
-<div class="bg-gray-50 p-6 rounded-xl">
-<h2 class="text-xl font-bold mb-4 text-green-600">
-<i class="fas fa-user mr-2"></i>Personal Details
-</h2>
+    <!-- Personal Details -->
 
-<div class="space-y-3">
-<p><strong>Email:</strong> donor@gmail.com</p>
-<p><strong>Phone:</strong> +91 9876543210</p>
-<p><strong>Organization:</strong> Royal Events</p>
-<p><strong>City:</strong> Hyderabad</p>
-<p><strong>Address:</strong> Habsiguda, Hyderabad</p>
-</div>
-</div>
+    <div class="grid md:grid-cols-2 gap-8 mt-8">
 
-<div class="bg-gray-50 p-6 rounded-xl">
-<h2 class="text-xl font-bold mb-4 text-green-600">
-<i class="fas fa-chart-line mr-2"></i>Donation Stats
-</h2>
+        <div class="bg-white shadow-lg rounded-xl p-6">
 
-<div class="space-y-3">
-<p><strong>Total Donations:</strong> 42</p>
-<p><strong>Meals Shared:</strong> 1,240</p>
-<p><strong>Homes Helped:</strong> 32</p>
-<p><strong>Rating:</strong> ⭐ 4.9</p>
-</div>
-</div>
+            <h2 class="text-2xl font-bold text-green-600 mb-5">
 
-</div>
+                <i class="fas fa-user mr-2"></i>
+
+                Personal Details
+
+            </h2>
+
+            <div class="space-y-4">
+
+                <p>
+                    <strong>Name:</strong>
+                    {{ donor.name }}
+                </p>
+
+                <p>
+                    <strong>Email:</strong>
+                    {{ donor.email }}
+                </p>
+
+                <p>
+                    <strong>Phone:</strong>
+                    {{ donor.phone }}
+                </p>
+
+                <p>
+                    <strong>Username:</strong>
+                    {{ request.user.username }}
+                </p>
+
+            </div>
+
+        </div>
 
 
-<div class="mt-10">
-<h2 class="text-2xl font-bold text-green-600 mb-6">
-🍲 Recent Donations
-</h2>
 
-<div class="space-y-4">
+        <!-- Statistics -->
 
-<div class="bg-gray-50 p-5 rounded-xl flex justify-between items-center">
-<div>
-<h3 class="font-bold">Wedding Event</h3>
-<p class="text-gray-500">150 Meals • Vegetarian</p>
-</div>
-<span class="bg-green-100 text-green-700 px-4 py-2 rounded-lg">
-Completed
-</span>
-</div>
+        <div class="bg-white shadow-lg rounded-xl p-6">
 
-<div class="bg-gray-50 p-5 rounded-xl flex justify-between items-center">
-<div>
-<h3 class="font-bold">Birthday Function</h3>
-<p class="text-gray-500">80 Meals • Mixed Food</p>
-</div>
-<span class="bg-orange-100 text-orange-700 px-4 py-2 rounded-lg">
-Pending Pickup
-</span>
-</div>
+            <h2 class="text-2xl font-bold text-green-600 mb-5">
 
-</div>
-</div>
+                <i class="fas fa-chart-line mr-2"></i>
 
-</div>
+                Donation Statistics
+
+            </h2>
+
+            <div class="grid grid-cols-2 gap-5">
+
+                <div class="bg-green-100 rounded-lg p-5 text-center">
+
+                    <h3 class="text-3xl font-bold text-green-700">
+                        42
+                    </h3>
+
+                    <p>Total Donations</p>
+
+                </div>
+
+                <div class="bg-blue-100 rounded-lg p-5 text-center">
+
+                    <h3 class="text-3xl font-bold text-blue-700">
+                        1240
+                    </h3>
+
+                    <p>Meals Shared</p>
+
+                </div>
+
+                <div class="bg-orange-100 rounded-lg p-5 text-center">
+
+                    <h3 class="text-3xl font-bold text-orange-700">
+                        32
+                    </h3>
+
+                    <p>Homes Helped</p>
+
+                </div>
+
+                <div class="bg-purple-100 rounded-lg p-5 text-center">
+
+                    <h3 class="text-3xl font-bold text-purple-700">
+                        ⭐ 4.9
+                    </h3>
+
+                    <p>Rating</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- Recent Donations -->
+
+    <div class="bg-white shadow-lg rounded-xl p-6 mt-8">
+
+        <h2 class="text-2xl font-bold text-green-600 mb-6">
+
+            <i class="fas fa-hand-holding-heart mr-2"></i>
+
+            Recent Donations
+
+        </h2>
+
+        <table class="w-full">
+
+            <thead>
+
+            <tr class="border-b">
+
+                <th class="text-left py-3">Event</th>
+                <th class="text-left">Food</th>
+                <th class="text-left">Quantity</th>
+                <th class="text-left">Status</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            <tr class="border-b">
+
+                <td class="py-4">Wedding Event</td>
+
+                <td>Vegetarian</td>
+
+                <td>150 Meals</td>
+
+                <td>
+
+                    <span class="bg-green-100 text-green-700 px-3 py-1 rounded-lg">
+
+                        Completed
+
+                    </span>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td class="py-4">Birthday Function</td>
+
+                <td>Mixed Food</td>
+
+                <td>80 Meals</td>
+
+                <td>
+
+                    <span class="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-lg">
+
+                        Pending
+
+                    </span>
+
+                </td>
+
+            </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
 </div>
 
 </body>
+
 </html>

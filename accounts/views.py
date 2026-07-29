@@ -175,14 +175,17 @@ def create_donation(request):
 
     return redirect("donar_dashboard")
 
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from .models import Donor
+
+from django.http import HttpResponse
+
 @login_required
 def donar_profile(request):
     donor = Donor.objects.get(user=request.user)
-
-    return render(request, "profile.html", {
-        "donor": donor
-    })
-
+    return HttpResponse(f"Profile loaded successfully: {donor.name}")
 @login_required
 def update_profile(request):
     donor = Donor.objects.get(user=request.user)
