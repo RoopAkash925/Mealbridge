@@ -182,3 +182,17 @@ def donar_profile(request):
     return render(request, "profile.html", {
         "donor": donor
     })
+
+@login_required
+def update_profile(request):
+    donor = Donor.objects.get(user=request.user)
+
+    if request.method == "POST":
+        donor.name = request.POST.get("name")
+        donor.phone = request.POST.get("phone")
+        donor.email = request.POST.get("email")
+        donor.save()
+
+        return redirect("donar_profile")
+
+    return render(request, "profile.html", {"donor": donor})
